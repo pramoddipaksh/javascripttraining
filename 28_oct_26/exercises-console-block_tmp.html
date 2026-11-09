@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>exercises-console-block.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="day-1-exercise-javascript-basics">Day 1 Exercise: JavaScript Basics</h1>
+<p><strong>Topic:</strong> JavaScript Basics - Console Output, Naming Rules, Block Scope, Strict Mode<br>
+<strong>Estimated Time:</strong> 30-35 minutes<br>
+<strong>Difficulty:</strong> Beginner</p>
+<hr>
+<h2 id="learning-goals">Learning Goals</h2>
+<p>By completing this exercise, you will:</p>
+<ul>
+<li>Create and run JavaScript files with <code>node</code></li>
+<li>Use <code>console.log()</code> to display text and values</li>
+<li>Store values in variables with good camelCase names</li>
+<li>Predict how <code>let</code> and <code>var</code> behave inside and outside a block</li>
+<li>Use <code>&quot;use strict&quot;</code> to catch a typo that JavaScript would otherwise hide</li>
+<li>Apply all of this to a banking scenario</li>
+</ul>
+<hr>
+<h2 id="exercise-instructions">Exercise Instructions</h2>
+<h3 id="part-1-create-your-profile-5-min">Part 1: Create Your Profile (5 min)</h3>
+<p>Create a new file called <code>day01-my-profile.js</code>. Store your profile details in variables, then print them. Use a banking job title as your role.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Create one variable for each detail: name, role, years of experience, one banking tool you use, and why you're learning JavaScript</li>
+<li>Declare each variable with <code>let</code></li>
+<li>Use camelCase names, for example <code>fullName</code> and <code>yearsOfExperience</code></li>
+<li>Print each detail with a label in front, for example <code>&quot;Name: &quot; + fullName</code></li>
+</ul>
+<p><strong>Example Output:</strong></p>
+<pre class="hljs"><code><div>Name: Priya Sharma
+Role: Loan Officer
+Experience: 3 years
+Tool: Core Banking System
+Learning Goal: To automate repetitive account checks
+</div></code></pre>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Declare all your variables at the top of the file, then print them below</li>
+<li>Use <code>+</code> to join a label and a variable: <code>console.log(&quot;Role: &quot; + jobRole);</code></li>
+<li>Text values need quotes. Numbers don't: <code>let yearsOfExperience = 3;</code></li>
+</ul>
+<hr>
+<h3 id="part-2-print-a-transaction-report-10-min">Part 2: Print a Transaction Report (10 min)</h3>
+<p>Create a new file called <code>day01-transaction-report.js</code> and write code to print a daily transaction report for a bank branch.</p>
+<p><strong>Requirements:</strong></p>
+<ol>
+<li>Print a report title (for example, &quot;Daily Transaction Report&quot;)</li>
+<li>Print 5 transactions, each with a transaction ID and an amount</li>
+<li>Give each transaction a status: APPROVED, DECLINED, or PENDING. Use each status at least once</li>
+<li>Use blank lines to make it readable</li>
+<li>Print a summary at the end (for example, &quot;3 Approved, 1 Declined, 1 Pending&quot;)</li>
+</ol>
+<p><strong>Example Output:</strong></p>
+<pre class="hljs"><code><div>==========================================
+        DAILY TRANSACTION REPORT
+==========================================
+
+Transaction 1: TXN-101, Amount: 5000
+Status: APPROVED
+
+Transaction 2: TXN-102, Amount: 12000
+Status: DECLINED
+
+Transaction 3: TXN-103, Amount: 800
+Status: PENDING
+
+Transaction 4: TXN-104, Amount: 25000
+Status: APPROVED
+
+Transaction 5: TXN-105, Amount: 3000
+Status: APPROVED
+
+==========================================
+        SUMMARY
+==========================================
+Total Transactions: 5
+Approved: 3
+Declined: 1
+Pending: 1
+==========================================
+</div></code></pre>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use <code>console.log(&quot;&quot;)</code> for blank lines</li>
+<li>Use <code>console.log(&quot;==========&quot;)</code> for borders</li>
+</ul>
+<hr>
+<h3 id="part-3-print-customer-records-5-min">Part 3: Print Customer Records (5 min)</h3>
+<p>Create a new file called <code>day01-customer-data.js</code> and write code to print details for 3 bank customers.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Print 3 customers, each with an account ID, holder name, and balance</li>
+<li>Format it so each customer's details are easy to read on their own</li>
+</ul>
+<p><strong>Example Output:</strong></p>
+<pre class="hljs"><code><div>CUSTOMER RECORDS
+=================
+
+Customer 1:
+Account ID: ACC-201
+Holder Name: Alice Fernandes
+Balance: 45000
+
+Customer 2:
+Account ID: ACC-202
+Holder Name: Ben Miller
+Balance: 12500
+
+Customer 3:
+Account ID: ACC-203
+Holder Name: Chloe Davis
+Balance: 78000
+
+Done.
+</div></code></pre>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Use blank lines between customers for readability</li>
+</ul>
+<hr>
+<h3 id="part-4-predict-then-run-5-min">Part 4: Predict, Then Run (5 min)</h3>
+<p>Create a new file called <code>day01-scope-predictions.js</code> and copy the four snippets below into it, in this order.</p>
+<p><strong>Before you run the file</strong>, write what you think each snippet will print as a comment above it. Then run the file and compare. If a prediction was wrong, write one line explaining why.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Snippet A</span>
+<span class="hljs-keyword">let</span> branchCode = <span class="hljs-string">"MUM-01"</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">let</span> branchCode = <span class="hljs-string">"PUN-02"</span>;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Inside:"</span>, branchCode);
+}
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Outside:"</span>, branchCode);
+
+<span class="hljs-comment">// Snippet B</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showServiceFee</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Fee before:"</span>, serviceFee);
+  <span class="hljs-keyword">var</span> serviceFee = <span class="hljs-number">250</span>;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Fee after:"</span>, serviceFee);
+}
+showServiceFee();
+
+<span class="hljs-comment">// Snippet C</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkLimitWithVar</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+    <span class="hljs-keyword">var</span> dailyLimit = <span class="hljs-number">50000</span>;
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Limit with var:"</span>, dailyLimit);
+}
+checkLimitWithVar();
+
+<span class="hljs-comment">// Snippet D</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkLimitWithLet</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+    <span class="hljs-keyword">let</span> dailyLimit = <span class="hljs-number">50000</span>;
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Limit with let:"</span>, dailyLimit);
+}
+checkLimitWithLet();
+</div></code></pre>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><code>console.log(&quot;Inside:&quot;, branchCode)</code> prints the label and the value with a space between them</li>
+<li>One snippet stops the program with an error. That's on purpose. Write down the error message you see</li>
+<li>Review <code>3-blockscope.js</code> from class if you get stuck</li>
+</ul>
+<hr>
+<h3 id="part-5-fix-the-bugs-5-min">Part 5: Fix the Bugs (5 min)</h3>
+<p>Create a new file called <code>day01-fix-the-bugs.js</code> and copy this code into it exactly as it is:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">"use strict"</span>;
+
+<span class="hljs-keyword">let</span> account-holder = <span class="hljs-string">"Meera Joshi"</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-number">2n</span>dAccountId = <span class="hljs-string">"ACC-305"</span>;
+<span class="hljs-keyword">let</span> accountBalance = <span class="hljs-number">15000</span>;
+
+acountBalance = <span class="hljs-number">20000</span>;
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Holder:"</span>, account-holder);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Second account:"</span>, <span class="hljs-number">2n</span>dAccountId);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Balance:"</span>, accountBalance);
+</div></code></pre>
+<p><strong>Requirements:</strong></p>
+<ol>
+<li>Run the file. Read the error, fix that line, and run it again. Repeat until it runs</li>
+<li>Rename any invalid variable names to valid camelCase names. Update every line that uses them</li>
+<li>Fix the typo so the balance is really updated to 20000</li>
+<li>Once it works, put the typo back and delete the <code>&quot;use strict&quot;;</code> line. Run it again. Write a comment at the top of the file explaining what changed and why that's dangerous</li>
+<li>Put <code>&quot;use strict&quot;;</code> back and fix the typo again before you submit</li>
+</ol>
+<p><strong>Example Output (after all fixes):</strong></p>
+<pre class="hljs"><code><div>Holder: Meera Joshi
+Second account: ACC-305
+Balance: 20000
+</div></code></pre>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Node shows the line number of the problem. Start there</li>
+<li>Variable names can't contain hyphens and can't start with a number</li>
+<li>JavaScript is case-sensitive and spelling-sensitive. <code>acountBalance</code> and <code>accountBalance</code> are different names</li>
+</ul>
+<hr>
+<h2 id="tricky-questions">Tricky Questions</h2>
+<p>Think through these before checking the answers key. They are the kind of<br>
+questions that catch people out in interviews and code review.</p>
+<ol>
+<li>If you declare <code>let balance</code> inside an <code>if</code> block, can you read it right after the block ends?</li>
+<li>Are <code>accountType</code>, <code>AccountType</code>, and <code>accounttype</code> the same variable?</li>
+<li>Without <code>&quot;use strict&quot;</code>, what happens if you assign a value to a variable you never declared?</li>
+<li>Does <code>var</code> inside a <code>for</code> loop stay inside the loop once it finishes?</li>
+</ol>
+<hr>
+<h2 id="bonus-challenges">Bonus Challenges</h2>
+<p>For those who finish early and want extra practice:</p>
+<p><strong>Bonus 1: Add status symbols</strong><br>
+In your transaction report, use plain text symbols instead of the status words, for example <code>[OK]</code> for approved, <code>[X]</code> for declined, and <code>[..]</code> for pending.</p>
+<p><strong>Bonus 2: Write an incident report</strong><br>
+Print a detailed report for a failed transaction:</p>
+<ul>
+<li>Transaction ID</li>
+<li>Steps that led to the failure</li>
+<li>Expected result</li>
+<li>Actual result</li>
+<li>Severity</li>
+</ul>
+<p><strong>Bonus 3: Watch a loop counter leak</strong><br>
+We cover loops properly on Day 6. For now, copy this code, run it, then change <code>var</code> to <code>let</code> and run it again. What changed, and why?</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">3</span>; i++) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Processing transaction"</span>, i);
+}
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"After loop:"</span>, i);
+</div></code></pre>
+<hr>
+<h2 id="reflection-questions">Reflection Questions</h2>
+<p>After completing the exercise, think about:</p>
+<ol>
+<li>What was easiest about this exercise?</li>
+<li>What was most challenging?</li>
+<li>Which prediction in Part 4 surprised you, and why?</li>
+<li>What questions do you have for the next class?</li>
+</ol>
+<p>Write down your answers, we'll discuss in the next session.</p>
+<hr>
+<h2 id="need-help">Need Help?</h2>
+<p><strong>Common Issues:</strong></p>
+<p><strong>My code shows &quot;SyntaxError&quot;</strong><br>
+Check that all text is inside quotes and console.log has parentheses:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Wrong</span>
+<span class="hljs-built_in">console</span>.log(Hello);
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello"</span>);
+</div></code></pre>
+<p><strong>I see &quot;ReferenceError: something is not defined&quot;</strong><br>
+Check the spelling and capital letters of the variable name. Also check that you're not using a <code>let</code> variable outside the <code>{ }</code> block where you declared it.</p>
+<p><strong>Nothing prints when I run my code</strong><br>
+Make sure you saved the file and are running the correct filename:</p>
+<pre class="hljs"><code><div>node day01-my-profile.js
+</div></code></pre>
+<p><strong>I see &quot;Cannot find module&quot;</strong><br>
+Check that your terminal is in the right folder before running <code>node</code>.</p>
+<p>If you're still stuck, review the demo code from class or ask in the class chat.</p>
+<hr>
+
+</body>
+
+</html>
